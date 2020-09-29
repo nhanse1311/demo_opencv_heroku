@@ -1,6 +1,7 @@
 package com.example.demo_opencv_heroku.services;
 
 
+
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -14,8 +15,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 @Service
 public class OpenCVService {
@@ -36,7 +36,9 @@ public class OpenCVService {
 //        File libTwo = new File("src/main/resources/static/opencv/x64/opencv_ffmpeg249_64.dll");
 //        System.load(libOne.getAbsolutePath());
 //        System.load(libTwo.getAbsolutePath());
+//        nu.pattern.OpenCV.loadLibrary();
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        System.loadLibrary("opencv_ffmpeg249_64");
         startStream();
     }
 
@@ -76,7 +78,6 @@ public class OpenCVService {
         if (isOpened) {
             boolean tempBool = capturedVideo.read(cameraMat);
             System.out.println("VideoCapture returned mat? " + tempBool);
-
             if (!cameraMat.empty()) {
                 System.out.println("Print image size: " + cameraMat.size());
                 //processing image captured in cameraMat object
