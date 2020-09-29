@@ -34,8 +34,8 @@ public class OpenCVService {
 //        String path = "D:\\101\\JavaSpringboot\\opencv_hekoru\\src\\main\\resources\\static\\opencv\\opencv\\build\\java\\x64";
 //        System.load(path + "\\opencv_java249.dll");
 //        System.load(path + "\\opencv_ffmpeg249_64.dll");
-        File libOne = new File("src/main/resources/static/opencv/opencv/build/java/x64/opencv_java249.dll");
-        File libTwo = new File("src/main/resources/static/opencv/opencv/build/java/x64/opencv_ffmpeg249_64.dll");
+        File libOne = new File("src/main/resources/static/opencv/x64/opencv_java249.dll");
+        File libTwo = new File("src/main/resources/static/opencv/x64/opencv_ffmpeg249_64.dll");
         System.load(libOne.getAbsolutePath());
         System.load(libTwo.getAbsolutePath());
         startStream();
