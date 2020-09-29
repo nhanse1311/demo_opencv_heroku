@@ -17,8 +17,8 @@ import java.io.IOException;
 
 @RestController
 public class OpenCVController {
-//    @Autowired
-//    private OpenCVService openCVService;
+    @Autowired
+    private OpenCVService openCVService;
 
     @RequestMapping(value = "/image", method = RequestMethod.GET)
     public String getImage() {
@@ -34,9 +34,9 @@ public class OpenCVController {
         return new ResponseEntity<>("File is upload successfully", HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/snapshot", method = RequestMethod.POST)
-//    public  ResponseEntity<?> snapshot(){
-//        openCVService.snapShot();
-//        return new ResponseEntity<>(openCVService.getImageName(), HttpStatus.BAD_REQUEST);
-//    }
+    @RequestMapping(value = "/snapshot", method = RequestMethod.POST)
+    public  ResponseEntity<?> snapshot(){
+        openCVService.snapShot();
+        return new ResponseEntity<>(openCVService.getImageName(), HttpStatus.BAD_REQUEST);
+    }
 }
