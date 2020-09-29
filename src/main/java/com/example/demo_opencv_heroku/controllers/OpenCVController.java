@@ -35,9 +35,7 @@ public class OpenCVController {
 
     @RequestMapping(value = "/snapshot", method = RequestMethod.POST)
     public  ResponseEntity<?> snapshot(){
-        if (openCVService.snapShot()){
-            return new ResponseEntity<>("File is upload successfully", HttpStatus.OK);
-        }
-        return new ResponseEntity<>("File is upload fail", HttpStatus.BAD_REQUEST);
+        openCVService.snapShot();
+        return new ResponseEntity<>(openCVService.getImageName(), HttpStatus.BAD_REQUEST);
     }
 }

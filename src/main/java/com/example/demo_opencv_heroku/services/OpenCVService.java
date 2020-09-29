@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 @Service
 public class OpenCVService {
+    public String imageName = "";
     private DaemonThread myThread = null;
     int count = 0;
     VideoCapture cap = null;
@@ -25,10 +26,18 @@ public class OpenCVService {
     Mat frame =null;
     MatOfByte mem = null;
 
+    public String getImageName() {
+        return imageName;
+    }
+
     public OpenCVService() {
-        String path = "C:\\opencv\\opencv\\build\\java\\x64";
-        System.load(path + "\\opencv_java249.dll");
-        System.load(path + "\\opencv_ffmpeg249_64.dll");
+//        String path = "D:\\101\\JavaSpringboot\\opencv_hekoru\\src\\main\\resources\\static\\opencv\\opencv\\build\\java\\x64";
+//        System.load(path + "\\opencv_java249.dll");
+//        System.load(path + "\\opencv_ffmpeg249_64.dll");
+        File libOne = new File("src/main/resources/static/opencv/opencv/build/java/x64/opencv_java249.dll");
+        File libTwo = new File("src/main/resources/static/opencv/opencv/build/java/x64/opencv_ffmpeg249_64.dll");
+        System.load(libOne.getAbsolutePath());
+        System.load(libTwo.getAbsolutePath());
         startStream();
     }
 
@@ -93,17 +102,17 @@ public class OpenCVService {
         myThread.runnable = true;
         t.start();
     }
-    public boolean snapShot(){
+    public String snapShot(){
         LocalDateTime now = LocalDateTime.now();
-        String imageName = System.currentTimeMillis() + ".jpg";
+        imageName = System.currentTimeMillis() + ".jpg";
         File file = new File("src/main/resources/static/images/" + imageName);
         try {
             file.createNewFile();
             Highgui.imwrite(file.getPath(), frame);
         } catch (IOException ex) {
             Logger.getLogger(LocatorEx.Snapshot.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            return "Cannot snapshot";
         }
-        return true;
+        return imageName;
     }
 }
