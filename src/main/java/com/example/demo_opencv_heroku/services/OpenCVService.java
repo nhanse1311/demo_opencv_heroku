@@ -1,6 +1,7 @@
 package com.example.demo_opencv_heroku.services;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.LocatorEx;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.highgui.Highgui;
@@ -38,6 +39,7 @@ public class OpenCVService {
         File libTwo = new File("src/main/resources/static/opencv/x64/opencv_ffmpeg249_64.dll");
         System.load(libOne.getAbsolutePath());
         System.load(libTwo.getAbsolutePath());
+
         startStream();
     }
 
