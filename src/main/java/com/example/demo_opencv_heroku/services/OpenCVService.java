@@ -1,6 +1,6 @@
 package com.example.demo_opencv_heroku.services;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.LocatorEx;
+
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
@@ -112,7 +112,7 @@ public class OpenCVService {
             file.createNewFile();
             Highgui.imwrite(file.getPath(), frame);
         } catch (IOException ex) {
-            Logger.getLogger(LocatorEx.Snapshot.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(LocatorEx.Snapshot.class.getName()).log(Level.SEVERE, null, ex);
             return "Cannot snapshot";
         }
         return imageName;
