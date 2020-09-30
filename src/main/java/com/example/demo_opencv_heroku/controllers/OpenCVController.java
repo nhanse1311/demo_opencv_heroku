@@ -31,7 +31,7 @@ public class OpenCVController {
         FileOutputStream fileOut = new FileOutputStream(convertFile);
         fileOut.write(file.getBytes());
         fileOut.close();
-        return new ResponseEntity<>("File is upload successfully", HttpStatus.OK);
+        return new ResponseEntity<>(convertFile.getAbsoluteFile(), HttpStatus.OK);
     }
 
 //    @RequestMapping(value = "/snapshot", method = RequestMethod.POST)
