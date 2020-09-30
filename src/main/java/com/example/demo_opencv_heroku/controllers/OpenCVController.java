@@ -31,12 +31,12 @@ public class OpenCVController {
         FileOutputStream fileOut = new FileOutputStream(convertFile);
         fileOut.write(file.getBytes());
         fileOut.close();
-        return new ResponseEntity<>(convertFile.getAbsoluteFile(), HttpStatus.OK);
+        return new ResponseEntity<>("File is upload successfully", HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/snapshot", method = RequestMethod.POST)
-//    public  ResponseEntity<?> snapshot(){
-//        openCVService.snapShot();
-//        return new ResponseEntity<>(openCVService.getImageName(), HttpStatus.BAD_REQUEST);
-//    }
+    @RequestMapping(value = "/snapshot", method = RequestMethod.POST)
+    public  ResponseEntity<?> snapshot(){
+        openCVService.snapShot();
+        return new ResponseEntity<>(openCVService.getImageName(), HttpStatus.BAD_REQUEST);
+    }
 }
